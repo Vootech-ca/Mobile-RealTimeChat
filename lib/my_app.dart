@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vootech_realchat/src/pages/login/login.dart';
+import 'package:vootech_realchat/src/pages/onboard/fragments/step_one.dart';
+
 
 
 class MyApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
 
-      home: Login(),
+      home: StepOne(),
     );
   }
 }
