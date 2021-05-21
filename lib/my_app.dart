@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vootech_realchat/src/pages/onboard/fragments/step_one.dart';
-
-
+import 'package:vootech_realchat/src/pages/onboard/onboard_page.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -10,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
 
-      home: StepOne(),
+      home: OnboardPage(),
     );
   }
 }

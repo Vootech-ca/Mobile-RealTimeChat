@@ -13,7 +13,7 @@ class StepTwo extends StatelessWidget {
           child: Container(
             height: height/2,
             width: MediaQuery.of(context).size.width,
-            child: Image.asset(AppAssets.onboardTwoImage),
+            child: Image.asset(AppAssets.onboardTwoImage , fit: BoxFit.cover),
           ),
         )
 

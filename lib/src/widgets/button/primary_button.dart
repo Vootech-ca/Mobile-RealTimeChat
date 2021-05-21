@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
 
 class PrimaryButton extends StatelessWidget {
-  final Widget child;
+  final String title;
   final double height;
   final VoidCallback onPressed;
 
-  PrimaryButton({@required this.child, this.onPressed, this.height = 48});
+  PrimaryButton({@required this.title, @required this.onPressed, this.height = 48});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,10 @@ class PrimaryButton extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(4),
           decoration: BoxDecoration(
-    gradient: LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-    AppColors.primaryColor,
-    AppColors.secondaryColor
-  ]),
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [AppColors.primaryColor, AppColors.secondaryColor]),
             borderRadius: BorderRadius.all(Radius.circular(24)),
             boxShadow: [
               BoxShadow(
@@ -37,14 +34,8 @@ class PrimaryButton extends StatelessWidget {
               ),
             ],
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Row(
-              children: [
-                Expanded(child: child),
-                SizedBox(width: 8),
-              ],
-            ),
+          child: Center(
+            child: Text(title, style: TextStyle(color: Colors.white, fontSize: 22),),
           ),
         ),
       ),
