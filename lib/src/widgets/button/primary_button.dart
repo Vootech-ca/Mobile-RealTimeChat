@@ -14,7 +14,7 @@ class PrimaryButton extends StatelessWidget {
     return Container(
       height: height,
       child: InkWell(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         onTap: () {
           onPressed();
         },
@@ -25,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [AppColors.primaryColor, AppColors.secondaryColor]),
-            borderRadius: BorderRadius.all(Radius.circular(24)),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
             boxShadow: [
               BoxShadow(
                 color: AppColors.primaryColor,

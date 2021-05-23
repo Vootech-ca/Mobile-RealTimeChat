@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
+import 'package:vootech_realchat/src/pages/connection_lost_page.dart';
 import 'package:vootech_realchat/src/pages/login/login_page.dart';
 import 'package:vootech_realchat/src/pages/onboard/fragments/step_one.dart';
 import 'package:vootech_realchat/src/pages/onboard/fragments/step_three.dart';
