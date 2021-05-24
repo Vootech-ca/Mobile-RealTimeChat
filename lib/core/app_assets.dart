@@ -14,5 +14,6 @@ class AppAssets {
   static const String loginIcon = "assets/images/png/loginIcon.png";
   static const String connectionLess = "assets/images/png/connectionless.png";
   static const String lock = "assets/images/png/lock.png";
+  static const String profile = "assets/images/png/profile.png";
 
 }

@@ -41,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(8),
+                  prefixIcon:Icon(Icons.perm_identity,color: AppColors.primaryColor,),
                   counterText: "",
                   border: const OutlineInputBorder(
                     borderSide: const BorderSide(color: AppColors.hintFontColor, width: 1.0),
@@ -61,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: TextFormField(
                 decoration: InputDecoration(
+                  prefixIcon:Icon(Icons.lock_outlined,color: AppColors.primaryColor,),
                   contentPadding: EdgeInsets.all(8),
                   counterText: "",
                   border: const OutlineInputBorder(

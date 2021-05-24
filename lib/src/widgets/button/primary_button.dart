@@ -6,8 +6,16 @@ class PrimaryButton extends StatelessWidget {
   final String title;
   final double height;
   final VoidCallback onPressed;
+  final Color color1;
+  final Color color2;
 
-  PrimaryButton({@required this.title, @required this.onPressed, this.height = 48});
+  PrimaryButton({
+    @required this.title,
+    @required this.onPressed,
+    this.height = 48,
+    this.color1 = AppColors.primaryColor,
+    this.color2 = AppColors.secondaryColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +32,15 @@ class PrimaryButton extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [AppColors.primaryColor, AppColors.secondaryColor]),
+                colors: [color1, color2]),
             borderRadius: BorderRadius.all(Radius.circular(20)),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primaryColor,
-                offset: Offset(0, 5),
-                blurRadius: 6,
-              ),
-            ],
+
           ),
           child: Center(
-            child: Text(title, style: TextStyle(color: Colors.white, fontSize: 22),),
+            child: Text(
+              title,
+              style: TextStyle(color: Colors.white, fontSize: 14,fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),
