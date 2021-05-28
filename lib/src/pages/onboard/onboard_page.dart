@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
-import 'package:vootech_realchat/src/pages/connection_lost_page.dart';
 import 'package:vootech_realchat/src/pages/login/login_page.dart';
 import 'package:vootech_realchat/src/pages/onboard/fragments/step_one.dart';
 import 'package:vootech_realchat/src/pages/onboard/fragments/step_three.dart';
@@ -67,16 +66,10 @@ class _OnboardPageState extends State<OnboardPage> {
                 elevation: 0.0,
                 primary: false,
                 actions: <Widget>[
-                  FlatButton(
-                      child: Text(
-                        isDone ? "Done" : "Skip",
-                        style: TextStyle(color: AppColors.primaryColor),
-                      ),
+                  TextButton(
+                      child: Text(isDone ? "Done" : "Skip", style: TextStyle(color: AppColors.primaryColor)),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                       })
                 ],
               ),
@@ -96,11 +89,7 @@ class _OnboardPageState extends State<OnboardPage> {
                       itemCount: _pages.length,
                       selectedIndex: currentPageIndex,
                       onPageSelected: (int page) {
-                        _controller.animateToPage(
-                          page,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.ease,
-                        );
+                        _controller.animateToPage(page, duration: const Duration(milliseconds: 300), curve: Curves.ease);
                       },
                     ),
                   ),
@@ -110,16 +99,9 @@ class _OnboardPageState extends State<OnboardPage> {
                     child: PrimaryButton(
                       onPressed: () {
                         if (isDone) {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                         } else {
-                          _controller.animateToPage(
-                            currentPageIndex + 1,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
+                          _controller.animateToPage(currentPageIndex + 1, duration: const Duration(milliseconds: 300), curve: Curves.ease);
                         }
                       },
                       title: isDone ? "Start" : "Next",

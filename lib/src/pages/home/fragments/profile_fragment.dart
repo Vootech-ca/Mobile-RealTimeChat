@@ -3,8 +3,8 @@ import 'package:vootech_realchat/core/app_assets.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
 import 'package:vootech_realchat/src/widgets/button/primary_button.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key key}) : super(key: key);
+class ProfileFragment extends StatelessWidget {
+  const ProfileFragment({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,7 @@ class ProfilePage extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            SizedBox(
-              height: 100,
-            ),
+            SizedBox(height: 100),
             Center(
               child: SizedBox(
                 height: 150,
@@ -38,7 +36,6 @@ class ProfilePage extends StatelessWidget {
                         onPressed: () {},
                         textColor: Colors.white,
                         color: AppColors.secondaryColor.withOpacity(0.5),
-
                         elevation: 0,
                         shape: CircleBorder(),
                       ),

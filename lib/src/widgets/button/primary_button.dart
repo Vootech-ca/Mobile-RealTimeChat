@@ -8,6 +8,7 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color color1;
   final Color color2;
+  final Widget child;
 
   PrimaryButton({
     @required this.title,
@@ -15,6 +16,7 @@ class PrimaryButton extends StatelessWidget {
     this.height = 48,
     this.color1 = AppColors.primaryColor,
     this.color2 = AppColors.secondaryColor,
+    this.child,
   });
 
   @override
@@ -29,18 +31,11 @@ class PrimaryButton extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(4),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [color1, color2]),
+            gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [color1, color2]),
             borderRadius: BorderRadius.all(Radius.circular(20)),
-
           ),
           child: Center(
-            child: Text(
-              title,
-              style: TextStyle(color: Colors.white, fontSize: 14,fontWeight: FontWeight.bold),
-            ),
+            child: child != null ? child : Text(title, style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold)),
           ),
         ),
       ),

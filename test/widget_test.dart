@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:vootech_realchat/main.dart';
 import 'package:vootech_realchat/my_app.dart';
 
 void main() {

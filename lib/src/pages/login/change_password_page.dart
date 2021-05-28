@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_assets.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
-import 'package:vootech_realchat/src/pages/connection_lost_page.dart';
-import 'package:vootech_realchat/src/pages/home/fragments/profile_page.dart';
+import 'package:vootech_realchat/src/pages/home/fragments/profile_fragment.dart';
 import 'package:vootech_realchat/src/widgets/button/primary_button.dart';
 
 class ChangePasswordPage extends StatefulWidget {
@@ -70,7 +69,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ProfilePage()));
+                          builder: (context) => ProfileFragment()));
 
                 },
                 title: "Send Login Link",
