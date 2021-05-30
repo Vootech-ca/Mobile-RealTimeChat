@@ -8,14 +8,14 @@ class HomeCard extends StatelessWidget {
   final String name;
   final String time;
   final String data;
+  final String number;
 
-  HomeCard({@required this.name, @required this.time, @required this.data});
+  HomeCard({@required this.name, @required this.time, @required this.data,@required this.number});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      elevation: 2,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -51,7 +51,25 @@ class HomeCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 12),
-                Text(data, style: TextStyle( fontSize: 14, letterSpacing: .3)),
+                Row(
+                  children: [
+                    Expanded(child: Text(data, style: TextStyle( fontSize: 14, letterSpacing: .3))),
+                    Container(
+                      child: Center(child: Text(number, style: TextStyle(color: Colors.white, fontSize: 8, letterSpacing: .3))),
+
+                      width: 28,
+                      height: 16,
+                      margin: EdgeInsets.only(right: 15),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(width: 3, color: AppColors.secondaryColor),
+                        color: AppColors.secondaryColor,
+
+                      ),
+                    ),
+
+                  ],
+                ),
               ],
             ),
           )

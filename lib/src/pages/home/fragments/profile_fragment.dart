@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_assets.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
+import 'package:vootech_realchat/src/pages/chat/chat_detail_page.dart';
 import 'package:vootech_realchat/src/widgets/button/primary_button.dart';
 
 class ProfileFragment extends StatelessWidget {
@@ -61,7 +62,9 @@ class ProfileFragment extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: PrimaryButton(
-                onPressed: () {},
+                onPressed: () {  Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return ChatDetailPage();
+                }));},
                 title: "Change Password",
                 height: 54,
               ),
