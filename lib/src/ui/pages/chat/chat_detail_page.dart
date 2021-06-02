@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vootech_realchat/src/widgets/chat/chat_app_bar.dart';
-import 'package:vootech_realchat/src/widgets/chat/write_message.dart';
+import 'package:vootech_realchat/src/ui/widgets/chat/chat_app_bar.dart';
+import 'package:vootech_realchat/src/ui/widgets/chat/write_message.dart';
 
 class ChatDetailPage extends StatefulWidget {
   const ChatDetailPage({Key key}) : super(key: key);

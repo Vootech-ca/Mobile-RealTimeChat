@@ -7,10 +7,10 @@ import 'package:vootech_realchat/src/bloc/blocs/login_bloc.dart';
 import 'package:vootech_realchat/src/bloc/events/login_event.dart';
 import 'package:vootech_realchat/src/bloc/states/login_state.dart';
 import 'package:vootech_realchat/src/di/get_it_service_locator.dart';
-import 'package:vootech_realchat/src/pages/home/home_page.dart';
+import 'package:vootech_realchat/src/ui/pages/home/home_page.dart';
+import 'package:vootech_realchat/src/ui/widgets/busy_indicator.dart';
+import 'package:vootech_realchat/src/ui/widgets/button/primary_button.dart';
 import 'package:vootech_realchat/src/utils/local_storage_service.dart';
-import 'package:vootech_realchat/src/widgets/busy_indicator.dart';
-import 'package:vootech_realchat/src/widgets/button/primary_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -65,11 +65,11 @@ class _LoginPageState extends State<LoginPage> {
             });
 
             if (state is LoginSuccess) {
-              _storageService.accessToken = state.result.token;
+              _storageService.currentUser = state.result;
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
             }
 
-            if(state is LoginError){
+            if (state is LoginError) {
               Fluttertoast.showToast(msg: "Error occurred", backgroundColor: Colors.white, textColor: AppColors.errorColor);
             }
           },

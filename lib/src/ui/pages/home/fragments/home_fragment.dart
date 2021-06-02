@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vootech_realchat/src/widgets/card/home_card.dart';
-import 'package:vootech_realchat/src/widgets/ping_item_widget.dart';
-import 'package:vootech_realchat/src/widgets/search_widget.dart';
+import 'package:vootech_realchat/src/ui/widgets/card/home_card.dart';
+import 'package:vootech_realchat/src/ui/widgets/ping_item_widget.dart';
+import 'package:vootech_realchat/src/ui/widgets/search_widget.dart';
 
 class HomeFragment extends StatefulWidget {
   const HomeFragment({Key key}) : super(key: key);

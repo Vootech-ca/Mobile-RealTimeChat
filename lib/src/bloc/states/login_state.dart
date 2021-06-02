@@ -31,11 +31,11 @@ class LoginError extends LoginState {
 }
 
 class LoginSuccess extends LoginState {
-  final AccesTokenResult result;
+  final AccessTokenResult result;
 
   const LoginSuccess({this.result});
 
-  LoginSuccess copyWith({AccesTokenResult result}) {
+  LoginSuccess copyWith({AccessTokenResult result}) {
     return LoginSuccess(result: result ?? this.result);
   }
 

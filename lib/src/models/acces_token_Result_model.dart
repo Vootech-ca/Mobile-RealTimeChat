@@ -1,21 +1,21 @@
 /// token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhNGJkOGE2ZmRiZjAwMDQ1NzY1YjIiLCJpYXQiOjE2MjE5NTQ0NTJ9.ceb7yNIVunfXDpRbyFLszUO_ikZMd9al_emb1GwEci4"
 /// user : {"isActive":false,"_id":"60aa4bd8a6fdbf00045765b2","name":"farzad","email":"farzad.f@gmail.com","password":"$2a$10$asKD6CRUXuImoVHoJEeamuNLlnIoMkglpvCPZXY.aXXEdl.dcOZ9i","regDate":"2021-05-23T12:34:32.974Z","__v":0}
 
-class AccesTokenResult {
+class AccessTokenResult {
   String _token;
   User _user;
 
   String get token => _token;
   User get user => _user;
 
-  AccesTokenResult({
+  AccessTokenResult({
       String token, 
       User user}){
     _token = token;
     _user = user;
 }
 
-  AccesTokenResult.fromJson(dynamic json) {
+  AccessTokenResult.fromJson(dynamic json) {
     _token = json["token"];
     _user = json["user"] != null ? User.fromJson(json["user"]) : null;
   }

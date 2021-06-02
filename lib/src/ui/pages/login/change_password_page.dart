@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_assets.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
-import 'package:vootech_realchat/src/pages/home/fragments/profile_fragment.dart';
-import 'package:vootech_realchat/src/widgets/button/primary_button.dart';
+import 'package:vootech_realchat/src/ui/pages/home/fragments/profile_fragment.dart';
+import 'package:vootech_realchat/src/ui/widgets/button/primary_button.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({Key key}) : super(key: key);
@@ -15,7 +15,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,18 +25,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               width: MediaQuery.of(context).size.width,
               child: Image.asset(AppAssets.lock),
             ),
-
-            Text("Troble Logging In?",
-                textAlign: TextAlign.center,
-                style:
-                TextStyle(fontSize: 32, fontWeight: FontWeight.bold,color: AppColors.primaryColor)),
+            Text("Troble Logging In?", textAlign: TextAlign.center, style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.primaryColor)),
             SizedBox(height: 32),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Text("Enter your email or phone and we'll send you a link to get back into your account.",
-                  textAlign: TextAlign.center,
-                  style:
-                  TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: AppColors.hintFontColor)),
+              child: Text("Enter your email or phone and we'll send you a link to get back into your account.", textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.hintFontColor)),
             ),
             SizedBox(height: 90),
             Padding(
@@ -44,7 +37,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(8),
-                  prefixIcon:Icon(Icons.email_outlined,color: AppColors.primaryColor,),
+                  prefixIcon: Icon(
+                    Icons.email_outlined,
+                    color: AppColors.primaryColor,
+                  ),
                   counterText: "",
                   border: const OutlineInputBorder(
                     borderSide: const BorderSide(color: AppColors.hintFontColor, width: 1.0),
@@ -53,7 +49,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   labelText: 'Email/Phone',
                 ),
                 validator: (value) {
-                  if(value.isEmpty){
+                  if (value.isEmpty) {
                     return "Email/Phone is required";
                   }
                   return null;
@@ -64,19 +60,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: PrimaryButton(
-
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileFragment()));
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfileFragment()));
                 },
                 title: "Send Login Link",
                 height: 48,
               ),
             ),
-
           ],
         ),
       ),

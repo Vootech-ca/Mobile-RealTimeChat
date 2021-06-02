@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_assets.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
-import 'package:vootech_realchat/src/pages/chat/chat_detail_page.dart';
-import 'package:vootech_realchat/src/widgets/button/primary_button.dart';
+import 'package:vootech_realchat/src/ui/pages/chat/chat_detail_page.dart';
+import 'package:vootech_realchat/src/ui/widgets/button/primary_button.dart';
 
 class ProfileFragment extends StatelessWidget {
   const ProfileFragment({Key key}) : super(key: key);

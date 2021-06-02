@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
-import 'package:vootech_realchat/src/pages/home/fragments/home_fragment.dart';
-import 'package:vootech_realchat/src/pages/home/fragments/notification_fragment.dart';
-import 'package:vootech_realchat/src/pages/home/fragments/profile_fragment.dart';
+import 'package:vootech_realchat/src/ui/pages/home/fragments/home_fragment.dart';
+import 'package:vootech_realchat/src/ui/pages/home/fragments/notification_fragment.dart';
+import 'package:vootech_realchat/src/ui/pages/home/fragments/profile_fragment.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);

@@ -13,7 +13,7 @@ class LoginApiProvider{
   { this.client = client ?? getIt.get<http.Client>();
   }
 
-  Future<AccesTokenResult> loginAsync(String email, String password) async {
+  Future<AccessTokenResult> loginAsync(String email, String password) async {
     var url = "${AppConfig.baseUrl}/api/user/login";
     Map<String, dynamic> body = {
       'email': email,
@@ -25,7 +25,7 @@ class LoginApiProvider{
       headers: {HttpHeaders.contentTypeHeader: "application/json"},
     );
 
-    return AccesTokenResult.fromJson(json.decode(response.body));
+    return AccessTokenResult.fromJson(json.decode(response.body));
 
   }
 }

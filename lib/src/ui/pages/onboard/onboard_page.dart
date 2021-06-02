@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
-import 'package:vootech_realchat/src/pages/login/login_page.dart';
-import 'package:vootech_realchat/src/pages/onboard/fragments/step_one.dart';
-import 'package:vootech_realchat/src/pages/onboard/fragments/step_three.dart';
-import 'package:vootech_realchat/src/pages/onboard/fragments/step_two.dart';
-import 'package:vootech_realchat/src/widgets/button/primary_button.dart';
-import 'package:vootech_realchat/src/widgets/dots_indicator.dart';
+import 'package:vootech_realchat/src/ui/pages/login/login_page.dart';
+import 'package:vootech_realchat/src/ui/pages/onboard/fragments/step_one.dart';
+import 'package:vootech_realchat/src/ui/pages/onboard/fragments/step_three.dart';
+import 'package:vootech_realchat/src/ui/pages/onboard/fragments/step_two.dart';
+import 'package:vootech_realchat/src/ui/widgets/button/primary_button.dart';
+import 'package:vootech_realchat/src/ui/widgets/dots_indicator.dart';
+import 'package:vootech_realchat/src/utils/local_storage_service.dart';
 
 class OnboardPage extends StatefulWidget {
   OnboardPage({Key key}) : super(key: key);
@@ -16,12 +17,22 @@ class OnboardPage extends StatefulWidget {
 
 class _OnboardPageState extends State<OnboardPage> {
   final _controller = new PageController();
+  LocalStorageService _storageService;
   List<Widget> _pages = [];
   int currentPageIndex = 0;
 
   @override
   void initState() {
     super.initState();
+    _fetchInitData();
+  }
+
+  _fetchInitData() async {
+    try {
+      _storageService = await LocalStorageService.getInstance();
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   @override
@@ -69,6 +80,7 @@ class _OnboardPageState extends State<OnboardPage> {
                   TextButton(
                       child: Text(isDone ? "Done" : "Skip", style: TextStyle(color: AppColors.primaryColor)),
                       onPressed: () {
+                        _storageService.onBoardScreenSeen = true;
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                       })
                 ],
@@ -99,6 +111,7 @@ class _OnboardPageState extends State<OnboardPage> {
                     child: PrimaryButton(
                       onPressed: () {
                         if (isDone) {
+                          _storageService.onBoardScreenSeen = true;
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                         } else {
                           _controller.animateToPage(currentPageIndex + 1, duration: const Duration(milliseconds: 300), curve: Curves.ease);

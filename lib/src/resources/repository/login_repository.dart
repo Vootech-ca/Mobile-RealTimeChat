@@ -9,5 +9,5 @@ class LoginRepository {
     this.loginApiProvider = loginApiProvider ?? getIt.get<LoginApiProvider>();
   }
 
-  Future<AccesTokenResult> loginAsync(String email, String password) => loginApiProvider.loginAsync(email, password);
+  Future<AccessTokenResult> loginAsync(String email, String password) => loginApiProvider.loginAsync(email, password);
 }

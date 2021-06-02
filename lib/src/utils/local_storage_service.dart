@@ -1,15 +1,13 @@
+import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vootech_realchat/src/models/acces_token_Result_model.dart';
 
 class LocalStorageService {
-  static const String AccessToken = "access_token";
-  static const String RefreshToken = "refresh_token";
   static const String CurrentUserData = "current_user";
-  static const String AppLanguageKey = 'current_language';
-  static const String FirebaseInstanceId = "fcm_token";
-  static const String NotificationsCount = "notifications_count";
   static const String OnBoardScreenSeen = 'onboard_seen';
 
   static LocalStorageService _instance;
+
   static SharedPreferences _preferences;
 
   static Future<LocalStorageService> getInstance() async {
@@ -22,24 +20,23 @@ class LocalStorageService {
     return _instance;
   }
 
-  // Access Token
-  String get accessToken => _getFromDisk(AccessToken);
+  AccessTokenResult get currentUser {
+    String dataString = _getFromDisk(CurrentUserData);
+    try {
+      return AccessTokenResult.fromJson(json.decode(dataString));
+    } catch (e) {
+      return null;
+    }
+  }
 
-  set accessToken(String value) => _saveToDisk(AccessToken, value);
-
-  // Refresh Token
-  String get refreshToken => _getFromDisk(RefreshToken);
-
-  set refreshToken(String value) => _saveToDisk(RefreshToken, value);
-
-  // Language Code
-
-
-  // Fcm Token
-
-
-  // Notifications
-
+  set currentUser(AccessTokenResult user) {
+    if (user == null) {
+      _saveToDisk(CurrentUserData, "");
+    } else {
+      var dataJson = json.encode(user.toJson());
+      _saveToDisk(CurrentUserData, dataJson);
+    }
+  }
 
   bool get onBoardScreenSeen {
     return _getFromDisk(OnBoardScreenSeen) ?? false;
