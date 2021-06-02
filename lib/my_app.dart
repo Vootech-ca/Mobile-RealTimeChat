@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vootech_realchat/src/ui/pages/login/login_page.dart';
+import 'package:vootech_realchat/src/ui/pages/splash/splash_screen.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: LoginPage(),
+      home: SplashScreen(),
     );
   }
 }

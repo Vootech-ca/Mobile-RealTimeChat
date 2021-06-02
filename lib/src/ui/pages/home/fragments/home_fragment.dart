@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vootech_realchat/src/ui/pages/users/users_list_page.dart';
 import 'package:vootech_realchat/src/ui/widgets/card/home_card.dart';
 import 'package:vootech_realchat/src/ui/widgets/ping_item_widget.dart';
 import 'package:vootech_realchat/src/ui/widgets/search_widget.dart';
@@ -21,14 +22,46 @@ class _HomeFragmentState extends State<HomeFragment> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 4,),
-              SearchWidget(),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => UsersListPage()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.1),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              child: Text("Search...", style: TextStyle(color: Colors.grey, fontSize: 12)),
+                            )),
+                        Card(
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            child: Icon(Icons.search, size: 24, color: Colors.pinkAccent),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(height: 16,),
               HomeCard(name: "name", time: "time", data: "data",number: "12",),
               HomeCard(name: "name", time: "time", data: "data",number: "12",),
               HomeCard(name: "name", time: "time", data: "data",number: "12",),
               HomeCard(name: "name", time: "time", data: "data",number: "12",),
               HomeCard(name: "name", time: "time", data: "data",number: "12",),
-
             ],
           ),
         ),

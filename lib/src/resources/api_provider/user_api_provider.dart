@@ -14,7 +14,7 @@ class UserApiProvider {
   }
 
   Future<List<UserListModel>> fetchAllUsersAsync(String accessToken) async {
-    var url = "${AppConfig.baseUrl}/users/all";
+    var url = "${AppConfig.baseUrl}/messages/users";
     http.Response response = await client.get(
       url,
       headers: {
@@ -22,7 +22,6 @@ class UserApiProvider {
         HttpHeaders.contentTypeHeader: "application/json",
       },
     );
-
     var resultJson = json.decode(response.body);
     return resultJson != null ? (resultJson as List).map((i) => UserListModel.fromJson(i)).toList() : null;
   }
