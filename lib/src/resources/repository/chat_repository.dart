@@ -10,5 +10,5 @@ class ChatRepository {
     this.apiProvider = apiProvider ?? getIt.get<ChatApiProvider>();
   }
 
-  Future<MessagesResultModel> fetchAllMessagesByEmail(MessageByEmailPayloadModel model) => apiProvider.fetchAllMessagesByEmail(model);
+  Future<MessagesResultModel> fetchAllMessagesByEmail(MessageByEmailPayloadModel model, String accessToken) => apiProvider.fetchAllMessagesByEmail(model, accessToken);
 }

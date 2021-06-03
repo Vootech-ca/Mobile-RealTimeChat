@@ -16,7 +16,7 @@ class MessagesByEmailBloc extends Bloc<ChatEvent, MessagesByEmailState> {
     if (event is FetchAllMessagesByEmail) {
       try {
         yield MessagesByEmailLoading();
-        var result = await _repository.fetchAllMessagesByEmail(event.model);
+        var result = await _repository.fetchAllMessagesByEmail(event.model, event.accessToken);
         yield MessagesByEmailLoaded(messages: result);
       } catch (ex) {
         yield MessagesByEmailError(ex);

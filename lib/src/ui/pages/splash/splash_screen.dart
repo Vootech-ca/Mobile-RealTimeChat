@@ -87,12 +87,12 @@ class _SplashScreenState extends State<SplashScreen> {
     if (_storageService != null) {
       if (_storageService.onBoardScreenSeen) {
         if (_storageService.currentUser == null) {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
         } else {
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
         }
       } else {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OnboardPage()));
       }
     }
   }

@@ -9,9 +9,11 @@ import 'package:vootech_realchat/src/bloc/states/user_state.dart';
 import 'package:vootech_realchat/src/di/get_it_service_locator.dart';
 import 'package:vootech_realchat/src/infrastracture/notifiers/auth_notifier.dart';
 import 'package:vootech_realchat/src/models/user_list_model.dart';
+import 'package:vootech_realchat/src/ui/pages/chat/chat_detail_page.dart';
 import 'package:vootech_realchat/src/ui/widgets/busy_indicator.dart';
 import 'package:vootech_realchat/src/ui/widgets/button/circle_icon_button.dart';
 import 'package:vootech_realchat/src/ui/widgets/card/user_item_card.dart';
+import 'package:vootech_realchat/src/utils/local_storage_service.dart';
 
 class UsersListPage extends StatefulWidget {
   const UsersListPage({Key key}) : super(key: key);
@@ -33,7 +35,18 @@ class _UsersListPageState extends State<UsersListPage> {
   void initState() {
     _usersListBloc = getIt<UsersListBloc>();
     super.initState();
-    _usersListBloc.add(FetchAllUsers(accessToken: ""));
+    _fetchInitData();
+  }
+
+  _fetchInitData() async {
+    try {
+      var storageService = await LocalStorageService.getInstance();
+      if (storageService.currentUser != null) {
+        _usersListBloc.add(FetchAllUsers(accessToken: storageService.currentUser.token));
+      }
+    } catch (e) {
+      Fluttertoast.showToast(msg: e);
+    }
   }
 
   @override
@@ -115,7 +128,11 @@ class _UsersListPageState extends State<UsersListPage> {
           bloc: _usersListBloc,
           builder: (context, state) {
             if (state is UsersListLoading) {
-              return Center(child: BusyIndicator(color: AppColors.secondaryColor, size: 32,));
+              return Center(
+                  child: BusyIndicator(
+                color: AppColors.secondaryColor,
+                size: 32,
+              ));
             }
             if (state is UsersListLoaded) {
               if (_filteredUsers.isEmpty) {
@@ -126,6 +143,9 @@ class _UsersListPageState extends State<UsersListPage> {
                   var user = _filteredUsers.elementAt(index);
                   return UserItemCard(
                     name: user.name,
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDetailPage()));
+                    },
                   );
                 },
                 itemCount: _filteredUsers.length,

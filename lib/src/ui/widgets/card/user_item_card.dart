@@ -22,15 +22,15 @@ class UserItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  width: 60,
-                  height: 60,
+                  width: 48,
+                  height: 48,
                   margin: EdgeInsets.only(right: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     border: Border.all(width: 3, color: AppColors.secondaryColor),
                   ),
                 ),
-                Text(name, style: TextStyle(color: AppColors.primaryColor, fontWeight: FontWeight.bold, fontSize: 18)),
+                Text(name, style: TextStyle(color: AppColors.primaryColor, fontWeight: FontWeight.bold, fontSize: 14)),
               ],
             ),
             Divider()

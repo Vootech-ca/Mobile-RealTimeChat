@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-class ReceivedMessage {
+class MessageModel {
   @JsonKey(name: "__v")
   int v;
   @JsonKey(name: "_id")
@@ -13,7 +13,7 @@ class ReceivedMessage {
   String msgTo;
   String toName;
 
-  ReceivedMessage({
+  MessageModel({
     this.v,
     this.id,
     this.createdAt,
@@ -25,8 +25,8 @@ class ReceivedMessage {
     this.toName,
   });
 
-  factory ReceivedMessage.fromJson(Map<String, dynamic> json) {
-    return ReceivedMessage(
+  factory MessageModel.fromJson(Map<String, dynamic> json) {
+    return MessageModel(
       v: json['__v'],
       id: json['_id'],
       createdAt: json['createdAt'],

@@ -39,6 +39,7 @@ dependencies:
   flutter_spinkit: ^4.1.2
   fluttertoast: ^8.0.7
   json_annotation: ^4.0.1
+  connectivity: ^3.0.6
 
 
 

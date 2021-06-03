@@ -11,8 +11,9 @@ abstract class ChatEvent extends Equatable {
 
 class FetchAllMessagesByEmail extends ChatEvent {
   final MessageByEmailPayloadModel model;
+  final String accessToken;
 
-  const FetchAllMessagesByEmail({@required this.model});
+  const FetchAllMessagesByEmail({@required this.model, @required this.accessToken,});
 
   @override
   List<Object> get props => [model];

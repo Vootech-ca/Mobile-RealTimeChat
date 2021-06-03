@@ -44,7 +44,6 @@ class _HomePageAccountantState extends State<HomePage> {
             icon: _currentIndex == 2 ? Icon(Icons.person, size: 28) : Icon(Icons.person_outline, size: 28),
             label: "",
           ),
-
         ],
         currentIndex: _currentIndex,
         unselectedItemColor: AppColors.hintFontColor,
