@@ -13,8 +13,8 @@ class UserApiProvider {
     this.client = client ?? getIt.get<http.Client>();
   }
 
-  Future<List<UserListModel>> fetchAllUsersAsync(String accessToken) async {
-    var url = "${AppConfig.baseUrl}/messages/users";
+  Future<List<UserListModel>> fetchAllMessagesUsersAsync(String accessToken) async {
+    var url = "${AppConfig.baseUrl}/users/all";
     http.Response response = await client.get(
       url,
       headers: {

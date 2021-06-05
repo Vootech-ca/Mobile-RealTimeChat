@@ -93,19 +93,19 @@ class _UsersListPageState extends State<UsersListPage> {
             ),
             _controller.text.length > 0
                 ? CircleIconButton(
-                    size: 24,
-                    iconSize: 20,
-                    color: Colors.grey,
-                    icon: Icons.close,
-                    callback: () {
-                      setState(() {
-                        _controller.text = "";
-                        setState(() {
-                          _filteredUsers = _allUsers;
-                        });
-                      });
-                    },
-                  )
+              size: 24,
+              iconSize: 20,
+              color: Colors.grey,
+              icon: Icons.close,
+              callback: () {
+                setState(() {
+                  _controller.text = "";
+                  setState(() {
+                    _filteredUsers = _allUsers;
+                  });
+                });
+              },
+            )
                 : SizedBox()
           ],
         ),
@@ -130,9 +130,9 @@ class _UsersListPageState extends State<UsersListPage> {
             if (state is UsersListLoading) {
               return Center(
                   child: BusyIndicator(
-                color: AppColors.secondaryColor,
-                size: 32,
-              ));
+                    color: AppColors.secondaryColor,
+                    size: 32,
+                  ));
             }
             if (state is UsersListLoaded) {
               if (_filteredUsers.isEmpty) {

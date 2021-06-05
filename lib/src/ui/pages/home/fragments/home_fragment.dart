@@ -149,10 +149,7 @@ class _HomeFragmentState extends State<HomeFragment> with TickerProviderStateMix
                                 builder: (context, state) {
                                   if (state is MessagesByEmailUninitialized || state is MessagesByEmailLoading) {
                                     return Center(
-                                      child: BusyIndicator(
-                                        color: AppColors.secondaryColor,
-                                        size: 48,
-                                      ),
+                                      child: BusyIndicator(),
                                     );
                                   }
                                   if (state is MessagesByEmailError) {

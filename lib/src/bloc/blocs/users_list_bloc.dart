@@ -16,7 +16,7 @@ class UsersListBloc extends Bloc<UserEvent, UsersListState> {
     if (event is FetchAllUsers) {
       try {
         yield UsersListLoading();
-        var result = await _repository.fetchAllUsersAsync(event.accessToken);
+        var result = await _repository.fetchAllMessagesUsersAsync(event.accessToken);
         yield UsersListLoaded(users: result);
       } catch (ex) {
         yield UsersListError(ex);

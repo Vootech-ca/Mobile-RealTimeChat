@@ -9,5 +9,5 @@ class UserRepository {
     this.apiProvider = userApiProvider ?? getIt.get<UserApiProvider>();
   }
 
-  Future<List<UserListModel>> fetchAllUsersAsync(String accessToken) => apiProvider.fetchAllUsersAsync(accessToken);
+  Future<List<UserListModel>> fetchAllMessagesUsersAsync(String accessToken) => apiProvider.fetchAllMessagesUsersAsync(accessToken);
 }
