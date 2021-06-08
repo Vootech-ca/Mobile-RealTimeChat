@@ -41,5 +41,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIBackgroundModes</key>
+    <array>
+    	<string>fetch</string>
+    	<string>remote-notification</string>
+    </array>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires access to the photo library for pick photos as profile avatar or attachment.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app requires access to the microphone for record voice messages in consultancy.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>This app requires access to the camera for pick photos as profile avatar or attachment.</string>
 </dict>
 </plist>

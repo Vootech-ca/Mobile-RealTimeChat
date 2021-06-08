@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vootech_realchat/core/app_colors.dart';
 import 'package:vootech_realchat/src/bloc/blocs/chat/messages_by_email_bloc.dart';
 import 'package:vootech_realchat/src/bloc/events/chat_event.dart';
 import 'package:vootech_realchat/src/bloc/states/chat/messages_by_email_state.dart';
 import 'package:vootech_realchat/src/di/get_it_service_locator.dart';
+import 'package:vootech_realchat/src/models/chat_user_model.dart';
 import 'package:vootech_realchat/src/models/message/message_by_email_payload_model.dart';
 import 'package:vootech_realchat/src/models/message/message.dart';
 import 'package:vootech_realchat/src/ui/pages/chat/chat_detail_page.dart';
@@ -33,6 +33,7 @@ class _HomeFragmentState extends State<HomeFragment> with TickerProviderStateMix
   var _scrollController = new ScrollController();
   final _refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
   MessagesByEmailBloc _messagesBloc;
+  LocalStorageService _storageService;
 
   List<MessageModel> chats = [];
 
@@ -46,9 +47,9 @@ class _HomeFragmentState extends State<HomeFragment> with TickerProviderStateMix
 
   _fetchInitData() async {
     try {
-      var storageService = await LocalStorageService.getInstance();
-      if (storageService.currentUser != null) {
-        _messagesBloc.add(FetchAllMessagesByEmail(model: MessageByEmailPayloadModel(msgFrom: storageService.currentUser.user.email), accessToken: storageService.currentUser.token));
+      _storageService = await LocalStorageService.getInstance();
+      if (_storageService.currentUser != null) {
+        _messagesBloc.add(FetchAllMessagesByEmail(model: MessageByEmailPayloadModel(msgFrom: _storageService.currentUser.user.email), accessToken: _storageService.currentUser.token));
       } else {
         _messagesBloc.add(FetchAllMessagesByEmail(model: MessageByEmailPayloadModel(msgFrom: "hello212.you5@hi5.com"), accessToken: ""));
       }
@@ -178,7 +179,10 @@ class _HomeFragmentState extends State<HomeFragment> with TickerProviderStateMix
                                           time: chat.createdAt ?? "",
                                           number: "0",
                                           onTap: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDetailPage()));
+                                            var currentUser = _storageService.currentUser.user;
+                                            var contact = ChatUserModel(name: chat.toName, email: chat.msgTo);
+                                            var accessToken = _storageService.currentUser.token;
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDetailPage(currentUser: currentUser, contact: contact, accessToken: accessToken,)));
                                           },
                                         );
                                       },

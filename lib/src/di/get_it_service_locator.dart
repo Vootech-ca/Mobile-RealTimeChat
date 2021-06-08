@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:vootech_realchat/src/bloc/blocs/chat/messages_by_email_bloc.dart';
+import 'package:vootech_realchat/src/bloc/blocs/chat/send_text_message_bloc.dart';
 import 'package:vootech_realchat/src/bloc/blocs/login_bloc.dart';
 import 'package:vootech_realchat/src/bloc/blocs/users_list_bloc.dart';
 import 'package:vootech_realchat/src/resources/api_provider/chat_api_provider.dart';
@@ -26,4 +27,5 @@ void setupLocator() {
   getIt.registerFactory<LoginBloc>(() => LoginBloc());
   getIt.registerFactory<UsersListBloc>(() => UsersListBloc());
   getIt.registerFactory<MessagesByEmailBloc>(() => MessagesByEmailBloc());
+  getIt.registerFactory<SendTextMessageBloc>(() => SendTextMessageBloc());
 }

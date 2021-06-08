@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:vootech_realchat/core/app_config.dart';
 import 'package:vootech_realchat/src/di/get_it_service_locator.dart';
-import 'package:vootech_realchat/src/models/acces_token_Result_model.dart';
+import 'package:vootech_realchat/src/models/access_token_result_model.dart';
 
 class LoginApiProvider{
   http.Client client;

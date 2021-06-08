@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       child: Consumer<AuthNotifier>(
         builder: (context, authNotifier, child) {
           return MaterialApp(
-            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            title: 'Vootech Realchat',
             home: SplashScreen(),
           );
         },

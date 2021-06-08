@@ -1,19 +1,15 @@
-/// token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhNGJkOGE2ZmRiZjAwMDQ1NzY1YjIiLCJpYXQiOjE2MjE5NTQ0NTJ9.ceb7yNIVunfXDpRbyFLszUO_ikZMd9al_emb1GwEci4"
-/// user : {"isActive":false,"_id":"60aa4bd8a6fdbf00045765b2","name":"farzad","email":"farzad.f@gmail.com","password":"$2a$10$asKD6CRUXuImoVHoJEeamuNLlnIoMkglpvCPZXY.aXXEdl.dcOZ9i","regDate":"2021-05-23T12:34:32.974Z","__v":0}
-
 class AccessTokenResult {
   String _token;
   User _user;
 
   String get token => _token;
+
   User get user => _user;
 
-  AccessTokenResult({
-      String token, 
-      User user}){
+  AccessTokenResult({String token, User user}) {
     _token = token;
     _user = user;
-}
+  }
 
   AccessTokenResult.fromJson(dynamic json) {
     _token = json["token"];
@@ -28,7 +24,6 @@ class AccessTokenResult {
     }
     return map;
   }
-
 }
 
 /// isActive : false
@@ -49,21 +44,20 @@ class User {
   int _v;
 
   bool get isActive => _isActive;
+
   String get id => _id;
+
   String get name => _name;
+
   String get email => _email;
+
   String get password => _password;
+
   String get regDate => _regDate;
+
   int get v => _v;
 
-  User({
-      bool isActive, 
-      String id, 
-      String name, 
-      String email, 
-      String password, 
-      String regDate, 
-      int v}){
+  User({bool isActive, String id, String name, String email, String password, String regDate, int v}) {
     _isActive = isActive;
     _id = id;
     _name = name;
@@ -71,7 +65,7 @@ class User {
     _password = password;
     _regDate = regDate;
     _v = v;
-}
+  }
 
   User.fromJson(dynamic json) {
     _isActive = json["isActive"];
@@ -94,5 +88,4 @@ class User {
     map["__v"] = _v;
     return map;
   }
-
 }

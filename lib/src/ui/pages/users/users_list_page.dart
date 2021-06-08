@@ -8,7 +8,7 @@ import 'package:vootech_realchat/src/bloc/events/user_event.dart';
 import 'package:vootech_realchat/src/bloc/states/user_state.dart';
 import 'package:vootech_realchat/src/di/get_it_service_locator.dart';
 import 'package:vootech_realchat/src/infrastracture/notifiers/auth_notifier.dart';
-import 'package:vootech_realchat/src/models/user_list_model.dart';
+import 'package:vootech_realchat/src/models/chat_user_model.dart';
 import 'package:vootech_realchat/src/ui/pages/chat/chat_detail_page.dart';
 import 'package:vootech_realchat/src/ui/widgets/busy_indicator.dart';
 import 'package:vootech_realchat/src/ui/widgets/button/circle_icon_button.dart';
@@ -27,9 +27,9 @@ class _UsersListPageState extends State<UsersListPage> {
   UsersListBloc _usersListBloc;
   AuthNotifier _authService;
 
-  List<UserListModel> _allUsers = [];
+  List<ChatUserModel> _allUsers = [];
 
-  List<UserListModel> _filteredUsers = [];
+  List<ChatUserModel> _filteredUsers = [];
 
   @override
   void initState() {

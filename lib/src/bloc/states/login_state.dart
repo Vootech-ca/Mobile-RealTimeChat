@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:vootech_realchat/src/models/acces_token_Result_model.dart';
+import 'package:vootech_realchat/src/models/access_token_result_model.dart';
 
 abstract class LoginState extends Equatable {
   const LoginState();

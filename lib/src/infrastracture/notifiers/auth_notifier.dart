@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vootech_realchat/src/models/acces_token_Result_model.dart';
+import 'package:vootech_realchat/src/models/access_token_result_model.dart';
 import 'package:vootech_realchat/src/utils/local_storage_service.dart';
 
 class AuthNotifier extends ChangeNotifier{

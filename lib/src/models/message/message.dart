@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:json_annotation/json_annotation.dart';
+import 'package:vootech_realchat/src/enums/chat_enums.dart';
 
 class MessageModel {
   @JsonKey(name: "__v")
@@ -12,6 +15,10 @@ class MessageModel {
   String msgFrom;
   String msgTo;
   String toName;
+  MessageType type;
+  String uuid;
+  File file;
+  SentOrReceived sentOrReceived;
 
   MessageModel({
     this.v,
@@ -23,6 +30,10 @@ class MessageModel {
     this.msgFrom,
     this.msgTo,
     this.toName,
+    this.type,
+    this.uuid,
+    this.file,
+    this.sentOrReceived,
   });
 
   factory MessageModel.fromJson(Map<String, dynamic> json) {
@@ -36,6 +47,7 @@ class MessageModel {
       msgFrom: json['msgFrom'],
       msgTo: json['msgTo'],
       toName: json['toName'],
+      type: json['type'],
     );
   }
 
@@ -50,6 +62,7 @@ class MessageModel {
     data['msgFrom'] = this.msgFrom;
     data['msgTo'] = this.msgTo;
     data['toName'] = this.toName;
+    data['type'] = this.type;
     return data;
   }
 }

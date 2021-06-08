@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:vootech_realchat/src/models/user_list_model.dart';
+import 'package:vootech_realchat/src/models/chat_user_model.dart';
 
 abstract class UsersListState extends Equatable {
   const UsersListState();
@@ -32,7 +32,7 @@ class UsersListError extends UsersListState {
 }
 
 class UsersListLoaded extends UsersListState {
-  final List<UserListModel> users;
+  final List<ChatUserModel> users;
 
   const UsersListLoaded({this.users});
 

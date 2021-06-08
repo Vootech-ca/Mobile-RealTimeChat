@@ -1,4 +1,4 @@
-class UserListModel {
+class ChatUserModel {
   String _id;
   String _name;
   String _email;
@@ -9,13 +9,13 @@ class UserListModel {
 
   String get email => _email;
 
-  UserListModel({String id, String name, String email}) {
+  ChatUserModel({String id, String name, String email}) {
     _id = id;
     _name = name;
     _email = email;
   }
 
-  UserListModel.fromJson(dynamic json) {
+  ChatUserModel.fromJson(dynamic json) {
     _id = json["_id"];
     _name = json["name"];
     _email = json["email"];

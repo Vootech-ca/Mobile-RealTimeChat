@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vootech_realchat/src/models/acces_token_Result_model.dart';
+import 'package:vootech_realchat/src/models/access_token_result_model.dart';
 
 class LocalStorageService {
   static const String CurrentUserData = "current_user";
