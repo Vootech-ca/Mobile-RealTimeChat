@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vootech_realchat/core/app_colors.dart';
 import 'package:vootech_realchat/src/models/message/message.dart';
 import 'package:vootech_realchat/src/ui/widgets/circle_avatar.dart';
 
@@ -24,12 +25,12 @@ class ReceivedImageMessagesWidget extends StatelessWidget {
               constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .8, maxHeight: 150),
               padding: const EdgeInsets.all(4.0),
               decoration: BoxDecoration(
-                color: Colors.blueGrey.withOpacity(0.2),
+                color: AppColors.lightPrimaryColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(0),
-                  topRight: Radius.circular(25),
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
+                  topRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
                 ),
               ),
               child: Column(
@@ -37,7 +38,7 @@ class ReceivedImageMessagesWidget extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Material(
-                      color: Theme.of(context).accentColor,
+                      color: AppColors.lightPrimaryColor,
                       child: InkWell(
                         child: _buildMessage(),
                         onTap: () => callback(),

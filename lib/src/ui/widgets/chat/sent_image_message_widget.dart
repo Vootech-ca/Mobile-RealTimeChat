@@ -29,18 +29,18 @@ class SentImageMessageWidget extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .6, maxHeight: 150),
             padding: const EdgeInsets.all(4.0),
             decoration: BoxDecoration(
-              color: AppColors.secondaryColor,
+              color: AppColors.lightSecondaryColor,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25),
-                topRight: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(0),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(0),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(25.0),
+              borderRadius: BorderRadius.circular(20.0),
               child: Material(
-                color: AppColors.secondaryColor,
+                color: AppColors.lightSecondaryColor,
                 child: InkWell(
                   child: Container(child: _buildMessage(context)),
                   onTap: () => callback(),

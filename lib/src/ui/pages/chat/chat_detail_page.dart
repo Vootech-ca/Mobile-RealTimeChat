@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission/permission.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vootech_realchat/core/app_colors.dart';
 import 'package:vootech_realchat/src/bloc/blocs/chat/messages_by_email_bloc.dart';
 import 'package:vootech_realchat/src/bloc/blocs/chat/send_text_message_bloc.dart';
 import 'package:vootech_realchat/src/bloc/events/chat_event.dart';
@@ -92,21 +93,36 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     return Consumer<AuthNotifier>(
       builder: (context, authNotifier, child) {
         return Scaffold(
+          backgroundColor: Colors.white,
           appBar: AppBar(
-            title: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                MyCircleAvatar(imgUrl: ""),
-                SizedBox(width: 15),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            backgroundColor: Colors.white,
+            flexibleSpace: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text(widget.contact.name, style: Theme.of(context).textTheme.subhead, overflow: TextOverflow.ellipsis, maxLines: 1),
-                    Text("Online", style: TextStyle(fontSize: 8, color: Colors.grey)),
+                    IconButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back,color: Colors.black,),
+                    ),
+                    MyCircleAvatar(imgUrl: ""),
+                    SizedBox(width: 15),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(widget.contact.name, style: Theme.of(context).textTheme.subhead, overflow: TextOverflow.ellipsis, maxLines: 1),
+                          Text("Online", style: TextStyle(fontSize: 8, color: Colors.grey)),
+                        ],
+                      ),
+                    )
                   ],
-                )
-              ],
+                ),
+              ),
             ),
           ),
           body: Stack(
@@ -252,7 +268,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
           SizedBox(width: 5),
           CircleIconButton(
             icon: (_showSendMessage) ? Icons.send : Icons.keyboard_voice,
-            color: Theme.of(context).accentColor,
+            color: Colors.white,
             callback: () async {
               setState(() {
                 _showBottom = false;
@@ -274,8 +290,8 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(35.0),
-          boxShadow: [BoxShadow(offset: Offset(1, 1), blurRadius: 2, color: Colors.grey)],
+          borderRadius: BorderRadius.circular(0.0),
+          boxShadow: [BoxShadow(offset: Offset(0, 0), blurRadius: 0, color: Colors.grey)],
         ),
         child: Row(
           children: <Widget>[

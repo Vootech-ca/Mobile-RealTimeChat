@@ -26,12 +26,12 @@ class SentMessageWidget extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .6),
             padding: const EdgeInsets.all(15.0),
             decoration: BoxDecoration(
-              color: AppColors.secondaryColor,
+              color: AppColors.lightSecondaryColor,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25),
-                topRight: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(0),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(0),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
             ),
             child: Text(

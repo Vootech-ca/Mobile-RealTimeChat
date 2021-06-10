@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vootech_realchat/core/app_colors.dart';
 
 class CircleIconButton extends StatelessWidget {
   final IconData icon;
@@ -15,7 +16,7 @@ class CircleIconButton extends StatelessWidget {
     @required this.color,
     this.size = 52.0,
     this.iconSize = 23.0,
-    this.iconColor = Colors.white,
+    this.iconColor = AppColors.primaryColor,
     this.tapRadius = 32.0
   });
 

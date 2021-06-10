@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vootech_realchat/core/app_colors.dart';
 import 'package:vootech_realchat/src/models/message/message.dart';
 import 'package:vootech_realchat/src/ui/widgets/circle_avatar.dart';
 
@@ -24,12 +25,12 @@ class ReceivedMessagesWidget extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .6),
             padding: const EdgeInsets.all(15.0),
             decoration: BoxDecoration(
-              color: Colors.blueGrey.withOpacity(0.2),
+              color: AppColors.lightPrimaryColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(0),
-                topRight: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25),
+                topRight: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
             ),
             child: Column(
