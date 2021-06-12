@@ -260,14 +260,65 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
 
   _makeChatBottomArea(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5.0),
       height: 61,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(0.0),
+        boxShadow: [BoxShadow(offset: Offset(0, 0), blurRadius: 0, color: Colors.grey)],
+      ),
       child: Row(
         children: <Widget>[
-          _makeSendArea(),
-          SizedBox(width: 5),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: TextField(
+              controller: _txtMessageController,
+              onChanged: (text) {
+                setState(() {
+                  _showBottom = false;
+                  _showSendMessage = text.length > 0;
+                });
+              },
+              onTap: () {
+                setState(() {
+                  _showBottom = false;
+                });
+              },
+              decoration: InputDecoration(hintText: "Type something...", border: InputBorder.none),
+            ),
+          )),
+          !_showSendMessage
+              ? CircleIconButton(
+            icon: Icons.attach_file,
+            color: Colors.white,
+            iconColor: Colors.grey,
+            callback: () async {
+              if (Platform.isAndroid) {
+                var permissions = List<PermissionName>();
+                permissions.add(PermissionName.Storage);
+                var results = await Permission.getPermissionsStatus(permissions);
+                var storageStatus = results[0].permissionStatus;
+                if (storageStatus == PermissionStatus.allow) {
+                  setState(() {
+                    _showBottom = !_showBottom;
+                  });
+                } else {
+                  var result = await Permission.requestPermissions(permissions);
+                  if (result[0].permissionStatus == PermissionStatus.allow) {
+                    setState(() {
+                      _showBottom = !_showBottom;
+                    });
+                  }
+                }
+              } else {
+                setState(() {
+                  _showBottom = !_showBottom;
+                });
+              }
+            },
+          )
+              : SizedBox(),
           CircleIconButton(
-            icon: (_showSendMessage) ? Icons.send : Icons.keyboard_voice,
+            icon: Icons.send,
             color: Colors.white,
             callback: () async {
               setState(() {
@@ -285,76 +336,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     );
   }
 
-  _makeSendArea() {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(0.0),
-          boxShadow: [BoxShadow(offset: Offset(0, 0), blurRadius: 0, color: Colors.grey)],
-        ),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16),
-                child: TextField(
-                  controller: _txtMessageController,
-                  onChanged: (text) {
-                    setState(() {
-                      _showBottom = false;
-                      _showSendMessage = text.length > 0;
-                    });
-                  },
-                  onTap: () {
-                    setState(() {
-                      _showBottom = false;
-                    });
-                  },
-                  decoration: InputDecoration(hintText: "Type something...", border: InputBorder.none),
-                ),
-              ),
-            ),
-            !_showSendMessage
-                ? CircleIconButton(
-                    icon: Icons.attach_file,
-                    color: Colors.white,
-                    iconColor: Colors.grey,
-                    callback: () async {
-                      if (Platform.isAndroid) {
-                        var permissions = List<PermissionName>();
-                        permissions.add(PermissionName.Storage);
-                        var results = await Permission.getPermissionsStatus(permissions);
-                        var storageStatus = results[0].permissionStatus;
-                        if (storageStatus == PermissionStatus.allow) {
-                          setState(() {
-                            _showBottom = !_showBottom;
-                          });
-                        } else {
-                          var result = await Permission.requestPermissions(permissions);
-                          if (result[0].permissionStatus == PermissionStatus.allow) {
-                            setState(() {
-                              _showBottom = !_showBottom;
-                            });
-                          }
-                        }
-                      } else {
-                        setState(() {
-                          _showBottom = !_showBottom;
-                        });
-                      }
-                    },
-                  )
-                : SizedBox(),
-          ],
-        ),
-      ),
-    );
-  }
-
   _makeContentSelectorContainer() {
     return Positioned(
-      bottom: 0,
+      bottom: 8,
       left: 8,
       right: 8,
       child: Container(
