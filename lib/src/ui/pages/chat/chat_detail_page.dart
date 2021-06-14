@@ -55,8 +55,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   bool _showSendMessage = false;
   var _uuid = Uuid();
 
-  MessagesResultModel _currentChat;
-
   List<MessageModel> chatMessages = [];
 
   Random random = new Random();
@@ -66,7 +64,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     super.initState();
     _consultancyBloc = getIt<MessagesByEmailBloc>();
     _sendMessageBloc = getIt<SendTextMessageBloc>();
-    _currentChat = null;
     _fetchInitData();
   }
 
@@ -145,8 +142,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       m.createdAt = "20:00";
                     }
                     setState(() {
+                      chatMessages.clear();
                       chatMessages.addAll(mySentMessages);
-                      chatMessages.addAll(myReceivedMessages);
+                      // chatMessages.addAll(myReceivedMessages);
                     });
                     try {
                       var maxScrollPosition = _msgScrollController.position.maxScrollExtent;
@@ -157,7 +155,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 child: BlocBuilder(
                   bloc: _consultancyBloc,
                   builder: (context, chatState) {
-                    if (chatState is MessagesByEmailUninitialized) {
+                    if (chatState is MessagesByEmailUninitialized || chatState is MessagesByEmailLoading) {
                       return BusyIndicator();
                     }
                     if (chatState is MessagesByEmailError) {

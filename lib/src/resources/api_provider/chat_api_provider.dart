@@ -7,6 +7,7 @@ import 'package:vootech_realchat/src/di/get_it_service_locator.dart';
 import 'package:vootech_realchat/src/infrastracture/error_handling/error_handling_helper.dart';
 import 'package:vootech_realchat/src/models/message/message.dart';
 import 'package:vootech_realchat/src/models/message/message_by_email_payload_model.dart';
+import 'package:vootech_realchat/src/models/message/message_send_model.dart';
 import 'package:vootech_realchat/src/models/message/messages_result_model.dart';
 
 class ChatApiProvider {
@@ -32,9 +33,14 @@ class ChatApiProvider {
 
   Future<MessageModel> sendTextMessageAsync(MessageModel model, String accessToken) async {
     var url = "${AppConfig.baseUrl}/messages/send";
+    var sendModel = new MessageSendModel(
+      msgFrom: model.msgFrom,
+      msgTo: model.msgTo,
+      message: model.message,
+    );
     http.Response response = await client.post(
       url,
-      body: json.encode(model.toJson()),
+      body: json.encode(sendModel.toJson()),
       headers: {
         HttpHeaders.contentTypeHeader: "application/json",
         "auth-token": accessToken,

@@ -15,16 +15,15 @@ class SentMessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isSending = (sendState is SendTextMessageStarted && sendState.uuid == message.uuid);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 7.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          Text(message.createdAt, style: Theme.of(context).textTheme.body2.apply(color: Colors.grey)),
-          SizedBox(width: 15),
           Container(
             constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .6),
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 4),
             decoration: BoxDecoration(
               color: AppColors.lightSecondaryColor,
               borderRadius: BorderRadius.only(
@@ -34,9 +33,16 @@ class SentMessageWidget extends StatelessWidget {
                 bottomRight: Radius.circular(20),
               ),
             ),
-            child: Text(
-              (sendState is SendTextMessageStarted && sendState.uuid == message.uuid) ? "Sending" : message.message,
-              style: Theme.of(context).textTheme.body2.apply(color: Colors.white),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 48),
+                  child: Text(message.message, style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.white)),
+                ),
+                SizedBox(height: 5),
+                isSending ? Icon(Icons.access_time, size: 16, color: Colors.white) : Text(message.createdAt, style: Theme.of(context).textTheme.caption.apply(color: Colors.white)),
+              ],
             ),
           ),
         ],
